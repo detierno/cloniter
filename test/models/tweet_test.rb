@@ -3,11 +3,6 @@
 require 'test_helper'
 
 class TweetTest < ActiveSupport::TestCase
-  def assert_include_error(record, error, type)
-    record.validate
-    assert record.errors.of_kind?(error, type)
-  end
-
   test 'valid fixtures' do
     assert tweets(:valid).valid?
     refute tweets(:invalid).valid?
