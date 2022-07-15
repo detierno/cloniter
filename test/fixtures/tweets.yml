@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 valid:
+  user_id: 1
   content: This is an awesome tweet
 
 invalid:
+  user_id: 1
   content: This is another awesome tweet but the author is using
     too many characters for the content so is not valid.
     Please shorten up a little bit and you should be good

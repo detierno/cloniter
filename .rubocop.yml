@@ -1,0 +1,6 @@
+Style/Documentation:
+  Enabled: false
+Rails/NotNullColumn:
+  Enabled: false
+
+require: rubocop-rails

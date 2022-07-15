@@ -13,6 +13,6 @@ class SignInTest < ApplicationSystemTestCase
 
     click_on 'Sign in'
 
-    assert_text 'My Feed'
+    assert_text 'Account created'
   end
 end

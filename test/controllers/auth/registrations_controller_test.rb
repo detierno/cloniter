@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'test_helper'
 
 module Auth
@@ -15,7 +16,7 @@ module Auth
           username: 'kingofnorth',
           password: 'dogdoggo',
           password_confirmation: 'dogdoggo'
-        }}
+        } }
       end
 
       assert_redirected_to root_path
@@ -27,7 +28,7 @@ module Auth
           name: 'John Snow',
           username: 'kingofnorth',
           password: ''
-        }}
+        } }
       end
 
       assert_response :success

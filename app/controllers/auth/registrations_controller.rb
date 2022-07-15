@@ -11,9 +11,7 @@ module Auth
 
       if @user.save
         cookies.encrypted[:user_id] = @user.id
-        respond_to do |format|
-          format.html { redirect_to root_path, notice: 'Account created' }
-        end
+        redirect_to root_path, notice: 'Account created'
       else
         render :new
       end

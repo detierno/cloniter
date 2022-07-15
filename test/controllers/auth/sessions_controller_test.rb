@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module Auth
@@ -19,7 +21,7 @@ module Auth
 
     test 'set user_id cookie' do
       post sign_in_path, params: { username: @user.username, password: 'secret' }
-      refute_nil @response.cookies['user_id']
+      assert_not_nil @response.cookies['user_id']
     end
 
     test 'render new with incorrect params' do

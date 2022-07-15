@@ -18,7 +18,15 @@
               <div class="sticky top-0 p-4 w-full">
                 <ul class="flex flex-col overflow-hidden">
                   <% if Current.user %>
-                    Logged in as: <%= Current.user.name %><br>
+                    <%= Current.user.name %><br>
+
+                    <%= link_to 'New Tweet',
+                      new_tweet_path,
+                      data: { turbo_frame: 'new_tweet' },
+                      class: 'text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+
+                    <br>
+
                     <%= button_to 'Logout', logout_path, method: :delete %>
                     <% else %>
                     <%= link_to 'Register', sign_up_path %>

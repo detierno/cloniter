@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test 'valid fixtures' do
     assert users(:valid).valid?
-    refute users(:invalid).valid?
+    assert_not users(:invalid).valid?
   end
 
   test 'validates name presence' do

@@ -5,7 +5,7 @@ require 'test_helper'
 class TweetTest < ActiveSupport::TestCase
   test 'valid fixtures' do
     assert tweets(:valid).valid?
-    refute tweets(:invalid).valid?
+    assert_not tweets(:invalid).valid?
   end
 
   test 'validates content presence' do

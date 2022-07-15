@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :users, only: %i[new create]
-  resources :tweets, only: :index
+  resources :tweets, only: %i[index new create]
 
   root to: 'tweets#index'
 

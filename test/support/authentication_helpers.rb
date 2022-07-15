@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Support
   module AuthenticationHelpers
     def sign_in_user(user, test_instance)
