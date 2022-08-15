@@ -9,7 +9,8 @@ module Auth
         cookies.encrypted[:user_id] = user.id
         redirect_to root_path, notice: 'Logged in successfully'
       else
-        render :new, alert: 'Invalid username or password'
+        flash.now[:notice] = 'Invalid username or password'
+        render :new, status: 422 
       end
     end
 

@@ -13,7 +13,7 @@ module Auth
         cookies.encrypted[:user_id] = @user.id
         redirect_to root_path, notice: 'Account created'
       else
-        render :new
+        render :new, alert: 'Could not create account'
       end
     end
 

@@ -5,7 +5,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   test 'valid fixtures' do
     assert users(:valid).valid?
-    assert_not users(:invalid).valid?
+    refute users(:invalid).valid?
   end
 
   test 'validates name presence' do

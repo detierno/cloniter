@@ -20,10 +20,7 @@
                   <% if Current.user %>
                     <%= Current.user.name %><br>
 
-                    <%= link_to 'New Tweet',
-                      new_tweet_path,
-                      data: { turbo_frame: 'new_tweet' },
-                      class: 'text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' %>
+                    <%= link_to 'New Tweet', new_tweet_path, data: { turbo_frame: 'new_tweet' }, class: blue_button %>
 
                     <br>
 
@@ -37,8 +34,17 @@
               </div>
           </aside>
           <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
+            <% if notice %>
+            <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+              <%= notice %>
+            </div>
+            <% end %>
+
+            <% if alert %>
+            <div class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
+              <%= alert %>
+            </div>
+            <% end %>
 
             <%= yield %>
           </main>

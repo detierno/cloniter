@@ -1,4 +1,4 @@
-<h1>Sign In</h1>
+<h1 class="text-3xl font-bold underline mb-5">Sign In</h1>
 
 <%= form_with url: sign_in_path do |f| %>
   <p>
@@ -9,7 +9,7 @@
   <%= f.label 'password:'%><br>
   <%= f.password_field :password, id: 'password' %>
   </p>
-  <p>
-  <%= f.submit 'Log In' %>
+  <p class="mt-5">
+  <%= f.submit 'Log In', class: 'btn-primary' %>
   </p>
 <% end %>
