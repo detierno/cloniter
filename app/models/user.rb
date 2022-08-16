@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
 
-  validates :name, value: true
-  validates :username, presence: true, value: true
+  with_options value: true do
+    validates :name
+    validates :username
+  end
 end

@@ -2,8 +2,8 @@
 
 require 'application_system_test_case'
 
-class SignInTest < ApplicationSystemTestCase
-  test 'user sign in' do
+class SignUpTest < ApplicationSystemTestCase
+  test 'user sign up' do
     visit sign_up_path
 
     fill_in 'Name', with: 'John Snow'
