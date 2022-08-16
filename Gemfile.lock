@@ -73,7 +73,11 @@ GEM
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
+    brakeman (5.3.1)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -250,6 +254,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
+  brakeman
+  bundler-audit
   capybara
   debug
   importmap-rails
@@ -259,6 +265,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   redis (~> 4.0)
+  rubocop
   rubocop-rails
   selenium-webdriver
   sprockets-rails
