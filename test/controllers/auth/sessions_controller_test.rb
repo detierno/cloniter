@@ -26,7 +26,7 @@ module Auth
 
     test 'render new with incorrect params' do
       post sign_in_path, params: { username: '' }
-      assert_response :success
+      assert_response :unprocessable_entity
     end
 
     test 'does not set user_id cookie' do

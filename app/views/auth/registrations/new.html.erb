@@ -1,31 +1,29 @@
-<h1 class="text-3xl font-bold underline">
+<h1 class="text-3xl font-bold underline mb-5">
   Register now for Cloniter
 </h1>
 
-<br>
-
 <%= form_with model: @user, url: sign_up_path do |f| %>
-  <div>
-    <%= f.label :name %></ br>
+  <p>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
+  </p>
 
-  <div>
-    <%= f.label :username %></ br>
+  <p>
+    <%= f.label :username %><br>
     <%= f.text_field :username %>
-  </div>
+  </p>
 
-  <div>
-    <%= f.label :password %></ br>
+  <p>
+    <%= f.label :password %><br>
     <%= f.password_field :password %>
-  </div>
+  </p>
 
-  <div>
-    <%= f.label :password_confirmation %></ br>
+  <p>
+    <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
-  </div>
+  </p>
 
-  <div>
-    <%= f.submit 'Sign in' %>
-  </div>
+  <p class="mt-5">
+    <%= f.submit 'Sign in', class: 'btn-primary' %>
+  </p>
 <% end %>
