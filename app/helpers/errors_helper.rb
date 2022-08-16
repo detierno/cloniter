@@ -6,8 +6,8 @@ module ErrorsHelper
   end
 
   def error_messages(record, field)
-    if (errors = record.errors[field])
-      tag.p(errors.join(', '), class: 'mb-5 text-orange-400')
-    end
+    return unless (errors = record.errors[field])
+
+    tag.p(errors.join(', '), class: 'mb-5 text-orange-400')
   end
 end
