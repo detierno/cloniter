@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 class UserName < WholeValue
   def initialize(content)
+    super()
+
     @content = content
     freeze
   end
@@ -13,6 +17,7 @@ class UserName < WholeValue
   end
 end
 
+# rubocop:disable  Naming/MethodName
 def UserName(content)
   case content
   when String then UserName.new(content)
@@ -21,3 +26,4 @@ def UserName(content)
     ExceptionalValue.new(content, reason: "Can't make Name from #{content.inspect}")
   end
 end
+# rubocop:enable  Naming/MethodName

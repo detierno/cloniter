@@ -7,6 +7,6 @@ valid:
   password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
 
 invalid:
-  name: Jamie
+  name: Ja
   username: 
   password_digest: <%= BCrypt::Password.create('testpassword', cost: 5) %>
