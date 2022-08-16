@@ -15,4 +15,17 @@ class SignUpTest < ApplicationSystemTestCase
 
     assert_text 'Account created'
   end
+
+  test 'user sign up with wrong credentials' do
+    visit sign_up_path
+
+    fill_in 'Name', with: 'John Snow'
+    fill_in 'Username', with: 'King @>!'
+    fill_in 'Password', with: 'doggydogo'
+    fill_in 'Password confirmation', with: 'doggydogo'
+
+    click_on 'Sign in'
+
+    assert_text 'Invalid format'
+  end
 end

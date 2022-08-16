@@ -26,9 +26,9 @@
 
                     <%= button_to 'Logout', logout_path, method: :delete %>
                     <% else %>
-                    <%= link_to 'Register', sign_up_path %>
+                    <%= link_to 'Register', sign_up_path, class: 'btn-action' %>
                     or
-                    <%= link_to 'go in', sign_in_path %>
+                    <%= link_to 'go in', sign_in_path, class: 'btn-default' %>
                   <% end %>
                 </ul>
               </div>
