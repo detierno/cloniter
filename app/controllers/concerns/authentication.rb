@@ -10,8 +10,8 @@ module Authentication
   private
 
   def authenticate
-    if (user = User.find_by(id: cookies.encrypted[:user_id]))
-      Current.user = user
+    if (account = Account.find_by(id: cookies.encrypted[:account_id]))
+      Current.account = account
     else
       redirect_to sign_in_path, alert: 'You must be signed in'
     end

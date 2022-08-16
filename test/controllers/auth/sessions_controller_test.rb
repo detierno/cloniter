@@ -10,18 +10,18 @@ module Auth
     end
 
     def setup
-      @user = users(:valid)
-      @user.update!(password: 'secret')
+      @account = accounts(:valid)
+      @account.update!(password: 'secret')
     end
 
     test 'should post create with correct params' do
-      post sign_in_path, params: { username: @user.username, password: 'secret' }
+      post sign_in_path, params: { username: @account.username, password: 'secret' }
       assert_redirected_to root_path
     end
 
-    test 'set user_id cookie' do
-      post sign_in_path, params: { username: @user.username, password: 'secret' }
-      assert_not_nil @response.cookies['user_id']
+    test 'set account_id cookie' do
+      post sign_in_path, params: { username: @account.username, password: 'secret' }
+      assert_not_nil @response.cookies['account_id']
     end
 
     test 'render new with incorrect params' do
@@ -29,9 +29,9 @@ module Auth
       assert_response :unprocessable_entity
     end
 
-    test 'does not set user_id cookie' do
+    test 'does not set account_id cookie' do
       post sign_in_path, params: { username: '' }
-      assert_nil @response.cookies['user_id']
+      assert_nil @response.cookies['account_id']
     end
   end
 end

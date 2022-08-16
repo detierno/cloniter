@@ -2,10 +2,10 @@
 
 module Support
   module AuthenticationHelpers
-    def sign_in_user(user, test_instance)
+    def sign_in_account(account, test_instance)
       controller_klass = test_instance.class_name.gsub('Test', '').constantize
 
-      Current.stubs(:user).returns(user)
+      Current.stubs(:account).returns(account)
       controller_klass.any_instance.stubs(:authenticate)
     end
   end

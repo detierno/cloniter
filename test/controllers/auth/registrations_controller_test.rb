@@ -9,9 +9,9 @@ module Auth
       assert_response :success
     end
 
-    test 'should create an user witho correct params' do
-      assert_difference('User.count') do
-        post sign_up_path, params: { user: {
+    test 'should create an account with correct params' do
+      assert_difference('Account.count') do
+        post sign_up_path, params: { account: {
           name: 'John Snow',
           username: 'kingofnorth',
           password: 'dogdoggo',
@@ -23,8 +23,8 @@ module Auth
     end
 
     test 'should render new with wrong params' do
-      assert_no_difference('User.count') do
-        post sign_up_path, params: { user: {
+      assert_no_difference('Account.count') do
+        post sign_up_path, params: { account: {
           name: 'John Snow',
           username: 'kingofnorth',
           password: ''

@@ -6,27 +6,27 @@ module Auth
 
     def create
       if authenticated
-        cookies.encrypted[:user_id] = user.id
+        cookies.encrypted[:account_id] = account.id
         redirect_to root_path, notice: 'Logged in successfully'
       else
-        flash.now[:notice] = 'Invalid username or password'
+        flash.now[:notice] = 'Invalid accountname or password'
         render :new, status: :unprocessable_entity
       end
     end
 
     def destroy
-      cookies.encrypted[:user_id] = nil
+      cookies.encrypted[:account_id] = nil
       redirect_to root_path, notice: 'Logged Out'
     end
 
     private
 
     def authenticated
-      user.present? && user.authenticate(params[:password])
+      account.present? && account.authenticate(params[:password])
     end
 
-    def user
-      @user ||= User.find_by(username: params[:username])
+    def account
+      @account ||= Account.find_by(username: params[:username])
     end
   end
 end

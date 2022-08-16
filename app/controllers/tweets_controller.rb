@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   include Authentication
 
   def index
-    @tweets = Current.user.tweets
+    @tweets = Current.account.tweets
   end
 
   def new
@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
   private
 
   def build_tweet(attrs = {})
-    Current.user.tweets.build(attrs)
+    Current.account.tweets.build(attrs)
   end
 
   def tweet_params

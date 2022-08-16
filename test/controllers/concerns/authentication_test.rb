@@ -21,22 +21,22 @@ class AuthenticationTest < ActiveSupport::TestCase
     @controller = controller_klass.new
   end
 
-  test 'dont set Current.user when cookie is invalid' do
+  test 'dont set Current.account when cookie is invalid' do
     @controller.send :authenticate
-    assert_nil Current.user
+    assert_nil Current.account
   end
 
-  test 'redirect user to sign in if cookie is invalid' do
+  test 'redirect account to sign in if cookie is invalid' do
     @controller.expects(:sign_in_path).once
     @controller.send :authenticate
   end
 
-  test 'set Current.user when cookie is valid' do
-    user = users(:valid)
+  test 'set Current.account when cookie is valid' do
+    account = accounts(:valid)
 
-    @controller.cookies[:encrypted] = { user_id: user.id }
+    @controller.cookies[:encrypted] = { account_id: account.id }
     @controller.send :authenticate
 
-    assert_equal user, Current.user
+    assert_equal account, Current.account
   end
 end

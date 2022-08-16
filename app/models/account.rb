@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class Account < ApplicationRecord
   attribute :name, NameType.new
   attribute :username, UserNameType.new
 

@@ -3,14 +3,14 @@
 module Auth
   class RegistrationsController < ApplicationController
     def new
-      @user = User.new
+      @account = Account.new
     end
 
     def create
-      @user = User.new(user_params)
+      @account = Account.new(account_params)
 
-      if @user.save
-        cookies.encrypted[:user_id] = @user.id
+      if @account.save
+        cookies.encrypted[:account_id] = @account.id
         redirect_to root_path, notice: 'Account created'
       else
         flash[:alert] = 'Could not create account'
@@ -20,8 +20,8 @@ module Auth
 
     private
 
-    def user_params
-      params.require(:user).permit(:name, :username, :password, :password_confirmation)
+    def account_params
+      params.require(:account).permit(:name, :username, :password, :password_confirmation)
     end
   end
 end

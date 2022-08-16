@@ -2,29 +2,29 @@
   Register now for Cloniter
 </h1>
 
-<%= form_with model: @user, url: sign_up_path do |f| %>
+<%= form_with model: @account, url: sign_up_path do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-    <%= exceptional_messages @user.name %>
+    <%= exceptional_messages @account.name %>
   </p>
 
   <p>
     <%= f.label :username %><br>
     <%= f.text_field :username %>
-    <%= exceptional_messages @user.username %>
+    <%= exceptional_messages @account.username %>
   </p>
 
   <p>
     <%= f.label :password %><br>
     <%= f.password_field :password %>
-    <%= error_messages @user, :password %>
+    <%= error_messages @account, :password %>
   </p>
 
   <p>
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
-    <%= error_messages @user, :password_confirmation %>
+    <%= error_messages @account, :password_confirmation %>
   </p>
 
   <p class="mt-5">

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,25 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_714_235_614) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_16_210927) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'tweets', force: :cascade do |t|
-    t.string 'content'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.bigint 'user_id', null: false
-    t.index ['user_id'], name: 'index_tweets_on_user_id'
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'username'
-    t.string 'password_digest'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "tweets", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_tweets_on_account_id"
   end
 
-  add_foreign_key 'tweets', 'users'
+  add_foreign_key "tweets", "accounts"
 end
