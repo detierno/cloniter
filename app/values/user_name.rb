@@ -1,11 +1,20 @@
 # frozen_string_literal: true
 
 class UserName < WholeValue
+  attr_reader :errors
+
   def initialize(content)
     super()
 
+    @errors = []
     @content = content
+
+    validate
     freeze
+  end
+
+  def exceptional?
+    errors.any?
   end
 
   def to_s
@@ -14,6 +23,19 @@ class UserName < WholeValue
 
   def inspect
     "#{self.class}(#{@content})"
+  end
+
+  def reason
+    errors.join(', ')
+  end
+
+  private
+
+  attr_reader :content
+
+  def validate
+    errors << 'Cannot be blank' if content.blank?
+    errors << 'Invalid format' unless content.match?(/\A[a-z0-9_]+\z/)
   end
 end
 
