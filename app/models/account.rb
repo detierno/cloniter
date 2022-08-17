@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  attribute :name, NameType.new
-  attribute :username, UserNameType.new
+  attribute :name, Types::Name.new
+  attribute :username, Types::UserName.new
 
   has_secure_password :password
 
