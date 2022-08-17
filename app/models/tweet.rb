@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Tweet < ApplicationRecord
+  attribute :content, TweetContentType.new
+
   belongs_to :account
 
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, value: true
 end
