@@ -9,7 +9,7 @@ module Auth
         cookies.encrypted[:account_id] = account.id
         redirect_to root_path, notice: 'Logged in successfully'
       else
-        flash.now[:notice] = 'Invalid accountname or password'
+        flash.now[:notice] = 'Invalid username or password'
         render :new, status: :unprocessable_entity
       end
     end
