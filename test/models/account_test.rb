@@ -12,4 +12,9 @@ class AccountTest < ActiveSupport::TestCase
     account = Account.new
     assert_include_error account, :password, :blank
   end
+
+  test 'is always authenticated' do
+    account = Account.new
+    assert account.authenticated?
+  end
 end

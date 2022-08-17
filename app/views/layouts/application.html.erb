@@ -17,15 +17,13 @@
           <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
               <div class="sticky top-0 p-4 w-full">
                 <ul class="flex flex-col overflow-hidden">
-                  <% if Current.account %>
-                    <%= Current.account.name %><br>
+                  <%= current_account.name %>
 
+                  <% if current_account.authenticated? %>
                     <%= link_to 'New Tweet', new_tweet_path, data: { turbo_frame: 'new_tweet' }, class: 'btn-primary' %>
-
-                    <br>
-
-                    <%= button_to 'Logout', logout_path, method: :delete %>
-                    <% else %>
+                    or
+                    <%= button_to 'Logout', logout_path, method: :delete, class: 'btn-default' %>
+                  <% else %>
                     <%= link_to 'Register', sign_up_path, class: 'btn-action' %>
                     or
                     <%= link_to 'go in', sign_in_path, class: 'btn-default' %>

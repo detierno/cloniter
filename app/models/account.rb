@@ -12,4 +12,6 @@ class Account < ApplicationRecord
     validates :name
     validates :username
   end
+
+  def authenticated? = true
 end
