@@ -7,6 +7,7 @@ class Account < ApplicationRecord
   has_secure_password :password
 
   has_many :tweets, dependent: :destroy
+  has_many :followers, dependent: :destroy
 
   with_options value: true do
     validates :name
@@ -16,4 +17,6 @@ class Account < ApplicationRecord
   scope :all_except, ->(account) { where.not(id: account.id) }
 
   def authenticated? = true
+
+  def follow(account) = account.followers.create!(subscriber: self)
 end

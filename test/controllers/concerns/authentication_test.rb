@@ -32,7 +32,7 @@ class AuthenticationTest < ActiveSupport::TestCase
   end
 
   test 'set Current.account when cookie is valid' do
-    account = accounts(:valid)
+    account = create(:account)
 
     @controller.cookies[:encrypted] = { account_id: account.id }
     @controller.send :authenticate

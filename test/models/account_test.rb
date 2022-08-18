@@ -4,8 +4,8 @@ require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
   test 'valid fixtures' do
-    assert accounts(:valid).valid?
-    assert_not accounts(:invalid).valid?
+    assert build(:account).valid?
+    assert_not build(:account, :invalid).valid?
   end
 
   test 'validates password presence' do
@@ -19,7 +19,15 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test '.all_except it scope out account' do
-    account = accounts(:valid)
-    assert_match /where "accounts"\."id" \!\= #{account.id}/i, Account.all_except(account).to_sql
+    account = create(:account)
+    assert_match(/where "accounts"\."id" != #{account.id}/i, Account.all_except(account).to_sql)
+  end
+
+  test '#follow' do
+    john = create(:john_account)
+    samsa = create(:samsa_account)
+
+    john.follow(samsa)
+    assert_includes samsa.followers.map(&:subscriber_id), john.id
   end
 end

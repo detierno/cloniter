@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class LoginTest < ApplicationSystemTestCase
   test 'account login' do
-    account = accounts(:valid)
+    account = create(:account)
     account.update!(password: 'secret')
 
     visit sign_in_path
@@ -18,7 +18,7 @@ class LoginTest < ApplicationSystemTestCase
   end
 
   test 'account login with wrong credentials' do
-    account = accounts(:valid)
+    account = create(:account)
 
     visit sign_in_path
 

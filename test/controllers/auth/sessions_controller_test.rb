@@ -10,7 +10,7 @@ module Auth
     end
 
     def setup
-      @account = accounts(:valid)
+      @account = create(:account)
       @account.update!(password: 'secret')
     end
 
