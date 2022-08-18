@@ -13,5 +13,7 @@ class Account < ApplicationRecord
     validates :username
   end
 
+  scope :all_except, ->(account) { where.not(id: account.id) }
+
   def authenticated? = true
 end

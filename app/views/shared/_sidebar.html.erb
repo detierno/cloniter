@@ -4,6 +4,10 @@
 
     <% if current_account.authenticated? %>
       <%= link_to 'New Tweet', new_tweet_path, data: { turbo_frame: 'new_tweet' }, class: 'btn-primary' %>
+
+      <p><%= link_to 'Tweets', tweets_path %></p>
+
+      <p><%= link_to 'Users', accounts_path %></p>
       or
       <%= button_to 'Logout', logout_path, method: :delete, class: 'btn-default' %>
     <% else %>

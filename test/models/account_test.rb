@@ -17,4 +17,9 @@ class AccountTest < ActiveSupport::TestCase
     account = Account.new
     assert account.authenticated?
   end
+
+  test '.all_except it scope out account' do
+    account = accounts(:valid)
+    assert_match /where "accounts"\."id" \!\= #{account.id}/i, Account.all_except(account).to_sql
+  end
 end

@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   resources :tweets, only: %i[index new create]
 
+  get 'accounts/index', as: :accounts
+
   root to: 'tweets#index'
 
   namespace :auth, as: '' do
