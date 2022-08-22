@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :account do
     name { 'Common Peasant' }
@@ -8,8 +10,8 @@ FactoryBot.define do
       username { '' }
     end
 
-    factory :john_account do
-      name { 'John Snow' }
+    factory :jon_account do
+      name { 'Jon Snow' }
       username { 'kingofnorth' }
     end
 

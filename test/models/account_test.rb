@@ -3,6 +3,16 @@
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
+  setup do
+    @jon = create(:jon_account)
+  end
+
+  def stub_subscribed_accounts(account)
+    mock('SubAccounts').tap do |subscribed_accounts_mock|
+      account.stubs(:subscribed_accounts).returns(subscribed_accounts_mock)
+    end
+  end
+
   test 'valid fixtures' do
     assert build(:account).valid?
     assert_not build(:account, :invalid).valid?
@@ -19,15 +29,33 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test '.all_except it scope out account' do
-    account = create(:account)
-    assert_match(/where "accounts"\."id" != #{account.id}/i, Account.all_except(account).to_sql)
+    assert_match(/where "accounts"\."id" != #{@jon.id}/i, Account.all_except(@jon).to_sql)
   end
 
   test '#follow' do
-    john = create(:john_account)
     samsa = create(:samsa_account)
 
-    john.follow(samsa)
-    assert_includes samsa.followers.map(&:subscriber_id), john.id
+    sub_mock = stub_subscribed_accounts(@jon)
+    sub_mock.expects(:subscribe).with(samsa).once
+
+    @jon.follow(samsa)
+  end
+
+  test '#follows?' do
+    samsa = create(:samsa_account)
+
+    sub_mock = stub_subscribed_accounts(@jon)
+    sub_mock.expects(:subscribed?).with(samsa).once
+
+    @jon.follows?(samsa)
+  end
+
+  test '#unfollow' do
+    samsa = create(:samsa_account)
+
+    sub_mock = stub_subscribed_accounts(@jon)
+    sub_mock.expects(:unsubscribe).with(samsa).once
+
+    @jon.unfollow(samsa)
   end
 end

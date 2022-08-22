@@ -2,6 +2,6 @@
   <h1 class="font-bold text-4xl">Accounts</h1>
 
   <% @accounts.each do |account| %>
-    <p><%= account.name %> - <%= account.username %></p>
+    <%= render 'shared/account_card', account: account %>
   <% end %>
 </div>

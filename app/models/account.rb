@@ -9,6 +9,12 @@ class Account < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :followers, dependent: :destroy
 
+  has_many :subscribed_accounts,
+           class_name: 'Follower',
+           foreign_key: :subscriber_id,
+           dependent: :destroy,
+           inverse_of: :subscriber
+
   with_options value: true do
     validates :name
     validates :username
@@ -18,5 +24,9 @@ class Account < ApplicationRecord
 
   def authenticated? = true
 
-  def follow(account) = account.followers.create!(subscriber: self)
+  def follow(account) = subscribed_accounts.subscribe(account)
+
+  def follows?(account) = subscribed_accounts.subscribed?(account)
+
+  def unfollow(account) = subscribed_accounts.unsubscribe(account)
 end

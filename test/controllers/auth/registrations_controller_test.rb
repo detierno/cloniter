@@ -12,7 +12,7 @@ module Auth
     test 'should create an account with correct params' do
       assert_difference('Account.count') do
         post sign_up_path, params: { account: {
-          name: 'John Snow',
+          name: 'Jon Snow',
           username: 'kingofnorth',
           password: 'dogdoggo',
           password_confirmation: 'dogdoggo'
@@ -25,7 +25,7 @@ module Auth
     test 'should render new with wrong params' do
       assert_no_difference('Account.count') do
         post sign_up_path, params: { account: {
-          name: 'John Snow',
+          name: 'Jon Snow',
           username: 'kingofnorth',
           password: ''
         } }
