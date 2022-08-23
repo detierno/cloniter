@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_145812) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "username", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_145812) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "account_id", null: false

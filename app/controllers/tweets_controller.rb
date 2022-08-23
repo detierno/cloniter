@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = build_tweet(tweet_params)
-    @tweet.save
+    @tweet.publish
 
     respond_to do |format|
       format.turbo_stream

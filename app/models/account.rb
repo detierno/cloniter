@@ -30,5 +30,8 @@ class Account < ApplicationRecord
 
   def follows?(account) = subscribed_accounts.subscribed?(account)
 
+  # def subscribers = followers.includes(:subscriber).map(&:subscriber)
+  def subscribers = Account.find(followers.pluck(:subscriber_id))
+
   def unfollow(account) = subscribed_accounts.unsubscribe(account)
 end

@@ -50,6 +50,17 @@ class AccountTest < ActiveSupport::TestCase
     @jon.follows?(samsa)
   end
 
+  test '#subscribers with existing accounts' do
+    samsa = create(:samsa_account)
+    samsa.subscribed_accounts.create!(account: @jon)
+
+    assert_equal [samsa], @jon.subscribers
+  end
+
+  test '#subscribers without existing accounts' do
+    assert_empty @jon.subscribers
+  end
+
   test '#unfollow' do
     samsa = create(:samsa_account)
 
