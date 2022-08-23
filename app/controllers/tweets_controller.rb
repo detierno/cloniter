@@ -13,11 +13,11 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = build_tweet(tweet_params)
+    @tweet.save
 
-    if @tweet.save
-      redirect_to tweets_path, notice: 'Tweet created'
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream
+      format.html { create_response(@tweet) }
     end
   end
 
@@ -25,6 +25,14 @@ class TweetsController < ApplicationController
 
   def build_tweet(attrs = {})
     Current.account.tweets.build(attrs)
+  end
+
+  def create_response(tweet)
+    if tweet.persisted?
+      redirect_to tweets_path, notice: 'Tweet created'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def tweet_params

@@ -24,6 +24,8 @@ class Account < ApplicationRecord
 
   def authenticated? = true
 
+  def feed = Tweet.from_accounts(subscribed_accounts.pluck(:account_id))
+
   def follow(account) = subscribed_accounts.subscribe(account)
 
   def follows?(account) = subscribed_accounts.subscribed?(account)

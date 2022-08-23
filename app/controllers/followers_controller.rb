@@ -14,7 +14,7 @@ class FollowersController < ApplicationController
 
   def destroy
     if Current.account.unfollow(account)
-      redirect_to accounts_path, notice: 'Account unfollowed'
+      redirect_to accounts_path, notice: 'Account unfollowed', status: :see_other
     else
       flash[:alert] = 'Unable to unfollow account'
       redirect_to accounts_path, status: :unprocessable_entity

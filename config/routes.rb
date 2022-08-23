@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'accounts/index', as: :accounts
 
+  get 'feeds/index', as: :feed
+
   root to: 'tweets#index'
 
   namespace :auth, as: '' do
