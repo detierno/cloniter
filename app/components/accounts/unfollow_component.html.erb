@@ -1,0 +1,7 @@
+<%=
+  render(Primer::LinkComponent.new(
+         scheme: :danger,
+         opts: { data: { turbo_method: :delete }},
+         href: follower_path(account.id))
+        ) { "Unfollow" }
+%>
