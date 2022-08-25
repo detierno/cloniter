@@ -2,6 +2,6 @@
   <h1 class="font-bold text-4xl">Accounts</h1>
 
   <% @accounts.each do |account| %>
-    <%= render 'shared/account_card', account: account %>
+    <%= render Accounts::UserCardComponent.new(account: account, current_account: current_account) %>
   <% end %>
 </div>

@@ -7,9 +7,9 @@
 </li>
 
 <% @links.each do |link| %>
-  <%= render NavComponent::LinkComponent.new(**link) %>
+  <%= render Sidebars::NavComponent::LinkComponent.new(**link) %>
 <% end %>
 
 <% @buttons.each do |button| %>
-  <%= render NavComponent::ButtonComponent.new(**button) %>
+  <%= render Sidebars::NavComponent::ButtonComponent.new(**button) %>
 <% end %>

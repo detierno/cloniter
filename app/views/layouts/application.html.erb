@@ -17,12 +17,42 @@
 
         <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
           <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
-            <%= render 'shared/sidebar' %>
+            <%= render Sidebars::RegisteredComponent.new(account: current_account) do |c| %>
+              <% c.with_sections([
+                {
+                  name: current_account.name,
+                  links: [
+                    { name: 'New Tweet', link: new_tweet_path, icon: :task, opts: {data: { turbo_frame: 'new_tweet' }}},
+                    { name: 'Feed', link: feed_path, icon: :feed },
+                    { name: 'Tweets', link: tweets_path, icon: :speech },
+                    { name: 'Users', link: accounts_path, icon: :users }]
+                },
+                {
+                  name: 'Settings',
+                  buttons: [
+                    { name: 'Logout', link: logout_path, icon: :logout },
+                  ]
+                }
+              ]) %>
+            <% end %>
+
+            <%= render Sidebars::AnonymousComponent.new(account: current_account) do |c| %>
+              <% c.with_sections([
+                {
+                  name: current_account.name,
+                  links: [
+                    { name: 'Register', link: sign_up_path, icon: :task },
+                    { name: 'Go in', link: sign_in_path, icon: :users }
+                  ]
+                }
+              ]) %>
+            <% end %>
           </div>
         </aside>
 
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-          <%= render 'shared/alerts' %>
+          <%= render AlertComponent.new(message: notice, color: 'blue') %>
+          <%= render AlertComponent.new(message: alert, color: 'yellow') %>
 
           <%= turbo_frame_tag 'new_tweet' %>
 
@@ -30,8 +60,5 @@
         </main>
       </div>
     </div>
-
-    <footer class="mt-auto">
-    </footer>
   </body>
 </html>
