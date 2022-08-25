@@ -2,14 +2,15 @@
   <% if current_account.authenticated? %>
     <%= render NavComponent.new(title: current_account.name) do |c| %>
       <% c.with_links([
-        { name: 'New Tweet', link: new_tweet_path, opts: {data: { turbo_frame: 'new_tweet' }, class: 'btn-primary'} },
+        { name: 'New Tweet', link: new_tweet_path, icon: :task, opts: {data: { turbo_frame: 'new_tweet' }} },
         { name: 'Feed', link: feed_path, icon: :feed },
         { name: 'Tweets', link: tweets_path, icon: :speech },
         { name: 'Users', link: accounts_path, icon: :users },
       ]) %>
+      <% c.with_buttons([
+        { name: 'Logout', link: logout_path, icon: :logout },
+      ]) %>
     <% end %>
-
-    <%= button_to('Logout', logout_path, method: :delete, class: 'btn-default') %>
   <% else %>
     <%= render NavComponent.new(title: current_account.name) do |c| %>
       <% c.with_links([
