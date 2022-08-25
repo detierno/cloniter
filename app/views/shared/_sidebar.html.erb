@@ -1,22 +1,30 @@
-<div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
-  <% if current_account.authenticated? %>
-    <%= render NavComponent.new(title: current_account.name) do |c| %>
-      <% c.with_links([
-        { name: 'New Tweet', link: new_tweet_path, icon: :task, opts: {data: { turbo_frame: 'new_tweet' }} },
+<%= render RegisteredSidebarComponent.new(account: current_account) do |c| %>
+  <% c.with_sections([
+    {
+      name: current_account.name,
+      links: [
+        { name: 'New Tweet', link: new_tweet_path, icon: :task, opts: {data: { turbo_frame: 'new_tweet' }}},
         { name: 'Feed', link: feed_path, icon: :feed },
         { name: 'Tweets', link: tweets_path, icon: :speech },
-        { name: 'Users', link: accounts_path, icon: :users },
-      ]) %>
-      <% c.with_buttons([
+        { name: 'Users', link: accounts_path, icon: :users }]
+    },
+    {
+      name: 'Settings',
+      buttons: [
         { name: 'Logout', link: logout_path, icon: :logout },
-      ]) %>
-    <% end %>
-  <% else %>
-    <%= render NavComponent.new(title: current_account.name) do |c| %>
-      <% c.with_links([
-        { name: 'Register', link: sign_up_path, opts: {class: 'btn-action'} },
-        { name: 'Go in', link: sign_in_path, opts: {class: 'btn-default'} }
-      ]) %>
-    <% end %>
-  <% end %>
-</div>
+      ]
+    }
+  ]) %>
+<% end %>
+
+<%= render AnonymousSidebarComponent.new(account: current_account) do |c| %>
+  <% c.with_sections([
+    {
+      name: current_account.name,
+      links: [
+        { name: 'Register', link: sign_up_path, icon: :task },
+        { name: 'Go in', link: sign_in_path, icon: :users }
+      ]
+    }
+  ]) %>
+<% end %>

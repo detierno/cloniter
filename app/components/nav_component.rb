@@ -1,13 +1,23 @@
 # frozen_string_literal: true
 
 class NavComponent < ViewComponent::Base
-  renders_many :links, 'LinkComponent'
-  renders_many :buttons, 'ButtonComponent'
+  renders_many :sections, 'SectionComponent'
 
-  def initialize(title:)
+  def initialize(account:)
     super
+  end
 
-    @title = title
+  class SectionComponent < ViewComponent::Base
+    renders_many :links, 'LinkComponent'
+    renders_many :buttons, 'ButtonComponent'
+
+    def initialize(name:, links: [], buttons: [])
+      super
+
+      @name = name
+      @links = links
+      @buttons = buttons
+    end
   end
 
   class LinkComponent < ViewComponent::Base
