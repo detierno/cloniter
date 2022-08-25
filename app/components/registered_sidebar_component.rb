@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegisteredSidebarComponent < NavComponent
   def initialize(account:)
     super

@@ -3,10 +3,6 @@
 class NavComponent < ViewComponent::Base
   renders_many :sections, 'SectionComponent'
 
-  def initialize(account:)
-    super
-  end
-
   class SectionComponent < ViewComponent::Base
     renders_many :links, 'LinkComponent'
     renders_many :buttons, 'ButtonComponent'

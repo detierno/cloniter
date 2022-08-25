@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnonymousSidebarComponent < NavComponent
   def initialize(account:)
     super
