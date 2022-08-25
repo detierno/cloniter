@@ -1,0 +1,15 @@
+<div class="overflow-y-auto overflow-x-hidden flex-grow">
+  <ul class="flex flex-col py-4 space-y-1">
+    <li class="px-5">
+      <div class="flex flex-row items-center h-8">
+        <div class="text-sm font-light tracking-wide text-gray-500">
+          <%= @title %>
+        </div>
+      </div>
+    </li>
+
+    <% links.each do |link| %>
+      <%= link %>
+    <% end %>
+  </ul>
+</div>

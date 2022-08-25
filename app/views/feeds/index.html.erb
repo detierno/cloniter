@@ -3,9 +3,7 @@
 
   <%= turbo_stream_from current_account, :feed %>
 
-  <div id="feed">new tweets here</div>
-
-  <% @feed.each do |tweet| %>
-    <%= render 'tweets/tweet', tweet: tweet %>
-  <% end %>
+  <div id="feed">
+    <%= render TweetComponent.with_collection(@feed) %>
+  </div>
 </div>

@@ -1,21 +1,21 @@
-<div class="sticky top-0 p-4 w-full">
-  <ul class="flex flex-col overflow-hidden">
-    <%= current_account.name %>
-
-    <% if current_account.authenticated? %>
-      <%= link_to 'New Tweet', new_tweet_path, data: { turbo_frame: 'new_tweet' }, class: 'btn-primary' %>
-
-      <p><%= link_to 'Feed', feed_path %></p>
-
-      <p><%= link_to 'Tweets', tweets_path %></p>
-
-      <p><%= link_to 'Users', accounts_path %></p>
-      or
-      <%= button_to 'Logout', logout_path, method: :delete, class: 'btn-default' %>
-    <% else %>
-      <%= link_to 'Register', sign_up_path, class: 'btn-action' %>
-      or
-      <%= link_to 'go in', sign_in_path, class: 'btn-default' %>
+<div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
+  <% if current_account.authenticated? %>
+    <%= render NavComponent.new(title: current_account.name) do |c| %>
+      <% c.with_links([
+        { name: 'New Tweet', link: new_tweet_path, opts: {data: { turbo_frame: 'new_tweet' }, class: 'btn-primary'} },
+        { name: 'Feed', link: feed_path, icon: :feed },
+        { name: 'Tweets', link: tweets_path, icon: :speech },
+        { name: 'Users', link: accounts_path, icon: :users },
+      ]) %>
     <% end %>
-  </ul>
+
+    <%= button_to('Logout', logout_path, method: :delete, class: 'btn-default') %>
+  <% else %>
+    <%= render NavComponent.new(title: current_account.name) do |c| %>
+      <% c.with_links([
+        { name: 'Register', link: sign_up_path, opts: {class: 'btn-action'} },
+        { name: 'Go in', link: sign_in_path, opts: {class: 'btn-default'} }
+      ]) %>
+    <% end %>
+  <% end %>
 </div>

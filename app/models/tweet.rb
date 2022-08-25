@@ -16,6 +16,6 @@ class Tweet < ApplicationRecord
   private
 
   def broadcast_to_subscribers
-    account.subscribers.each { |sub| broadcast_after_to sub, :feed, insert_by: :prepend, target: 'feed' }
+    account.subscribers.each { |sub| Broadcast::Tweet.prepend(tweet: self, subscriber: sub) }
   end
 end
