@@ -15,6 +15,8 @@ class Account < ApplicationRecord
            dependent: :destroy,
            inverse_of: :subscriber
 
+  has_many :subscribers, through: :followers
+
   with_options value: true do
     validates :name
     validates :username
@@ -24,14 +26,13 @@ class Account < ApplicationRecord
 
   def authenticated? = true
 
+  def build_tweet(attr = {}) = tweets.build(attr)
+
   def feed = Tweet.from_accounts(subscribed_accounts.pluck(:account_id))
 
   def follow(account) = subscribed_accounts.subscribe(account)
 
   def follows?(account) = subscribed_accounts.subscribed?(account)
-
-  # def subscribers = followers.includes(:subscriber).map(&:subscriber)
-  def subscribers = Account.find(followers.pluck(:subscriber_id))
 
   def unfollow(account) = subscribed_accounts.unsubscribe(account)
 end

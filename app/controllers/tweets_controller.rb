@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
   private
 
   def build_tweet(attrs = {})
-    Current.account.tweets.build(attrs)
+    Current.account.build_tweet(attrs)
   end
 
   def create_response(tweet)

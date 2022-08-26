@@ -9,8 +9,6 @@ module Primer
       @opts = opts
     end
 
-    private
-
     class Danger < LinkComponent; end
   end
 end
