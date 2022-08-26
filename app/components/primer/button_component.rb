@@ -9,14 +9,6 @@ module Primer
       @type = type
     end
 
-    private
-
-    def color
-      case @scheme
-      when :default then 'blue'
-      else
-        'purple'
-      end
-    end
+    class Primary < ButtonComponent; end
   end
 end

@@ -51,8 +51,8 @@
         </aside>
 
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-          <%= render AlertComponent.new(message: notice, color: 'blue') %>
-          <%= render AlertComponent.new(message: alert, color: 'yellow') %>
+          <%= render AlertComponent::Info.new(message: notice) %>
+          <%= render AlertComponent::Alert.new(message: alert) %>
 
           <%= turbo_frame_tag 'new_tweet' %>
 
