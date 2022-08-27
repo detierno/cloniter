@@ -6,7 +6,8 @@ class AlertComponentTest < ViewComponent::TestCase
   test 'info renders primary class with message' do
     expected = <<~STR.squish
       <div
-        class="p-4 mb-4 text-sm text-primary-700 bg-primary-100 rounded-lg dark:bg-primary-200 dark:text-primary-800"
+        class="absolute right-4 top-4 p-4 mb-4 text-sm text-primary-700
+          bg-primary-100 rounded-lg dark:bg-primary-200 dark:text-primary-800"
         role="alert">Hey There</div>
     STR
 
@@ -19,7 +20,8 @@ class AlertComponentTest < ViewComponent::TestCase
   test 'alert renders alert class with message' do
     expected = <<~STR.squish
       <div
-        class="p-4 mb-4 text-sm text-alert-700 bg-alert-100 rounded-lg dark:bg-alert-200 dark:text-alert-800"
+        class="absolute right-4 top-4 p-4 mb-4 text-sm text-alert-700
+          bg-alert-100 rounded-lg dark:bg-alert-200 dark:text-alert-800"
         role="alert">Hey There</div>
     STR
 

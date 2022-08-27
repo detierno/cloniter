@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-class Primer::ModalComponent < ViewComponent::Base
-  def initialize(name:)
-    @name = name
+module Primer
+  class ModalComponent < ViewComponent::Base
+    def initialize(name:)
+      super
+
+      @name = name
+    end
   end
 end

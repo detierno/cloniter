@@ -1,6 +1,4 @@
-<h1 class="text-3xl font-bold underline mb-5">
-  Register now for Cloniter
-</h1>
+<%= render(Primer::TitleComponent.new(title: 'Register now for cloniter')) %>
 
 <%= form_with model: @account, url: sign_up_path do |f| %>
   <p>
@@ -28,6 +26,6 @@
   </p>
 
   <p class="mt-5">
-    <%= f.submit 'Sign in', class: 'btn-primary' %>
+    <%= render(Primer::ButtonComponent::Primary.new(type: :submit)) { 'Sign in' } %>
   </p>
 <% end %>

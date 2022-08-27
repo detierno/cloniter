@@ -4,7 +4,7 @@
     <%= exceptional_messages tweet.content %>
 
   <p class="mt-5">
-    <%= form.submit 'Create', class: 'btn-primary' %>
+    <%= render(Primer::ButtonComponent::Primary.new(type: :submit)) { "Post" } %>
   </p>
   <% end %>
 </div>

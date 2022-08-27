@@ -17,7 +17,7 @@ class TweetComponentTest < ViewComponent::TestCase
 
     assert_equal(
       expected,
-      render_inline(TweetComponent.new(tweet: @tweet)).css("p").to_html.squish
+      render_inline(TweetComponent.new(tweet: @tweet)).css('p').to_html.squish
     )
   end
 end

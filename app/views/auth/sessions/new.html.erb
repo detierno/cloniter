@@ -1,15 +1,15 @@
-<h1 class="text-3xl font-bold underline mb-5">Sign In</h1>
+<%= render(Primer::TitleComponent.new(title: 'Sign In')) %>
 
 <%= form_with url: sign_in_path do |f| %>
   <p>
-  <%= f.label :username %><br>
-  <%= f.text_field :username, id: 'username' %>
+    <%= f.label :username %><br>
+    <%= f.text_field :username, id: 'username' %>
   </p>
   <p>
-  <%= f.label :password %><br>
-  <%= f.password_field :password, id: 'password' %>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, id: 'password' %>
   </p>
   <p class="mt-5">
-  <%= f.submit 'Log In', class: 'btn-primary' %>
+    <%= render(Primer::ButtonComponent::Primary.new(type: :submit)) { 'Log In' } %>
   </p>
 <% end %>

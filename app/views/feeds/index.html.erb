@@ -1,9 +1,7 @@
-<div>
-  <h1 class="font-bold text-4xl">My Feed</h1>
+<%= render(Primer::TitleComponent.new(title: 'My Feed')) %>
 
-  <%= turbo_stream_from current_account, :feed %>
+<%= turbo_stream_from current_account, :feed %>
 
-  <div id="feed">
-    <%= render TweetComponent.with_collection(@feed) %>
-  </div>
-</div>
+<div id="feed">
+  <%= render TweetComponent.with_collection(@feed) %>
+</div
