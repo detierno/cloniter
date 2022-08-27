@@ -19,8 +19,6 @@ module Sidebars
     end
 
     class LinkComponent < ViewComponent::Base
-      include IconsHelper
-
       def initialize(name:, link:, icon: nil, opts: {})
         super
 
@@ -32,8 +30,6 @@ module Sidebars
     end
 
     class ButtonComponent < ViewComponent::Base
-      include IconsHelper
-
       def initialize(name:, link:, icon: nil, opts: {})
         super
 

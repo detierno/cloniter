@@ -8,7 +8,7 @@ css_classes = %w[
 <li>
   <%= button_to(@link, method: :delete, class: css_classes) do %>
     <span class="inline-flex justify-center items-center ml-4">
-      <%= icon_tag(@icon) %>
+      <%= render(Primer::IconComponent.new(icon: @icon)) %>
     </span>
     <span class="ml-2 text-sm tracking-wide truncate">
       <%= @name %>
