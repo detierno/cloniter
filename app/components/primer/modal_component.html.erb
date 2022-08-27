@@ -1,0 +1,17 @@
+ <div data-controller="modal-component">
+
+   <div data-modal-component-target="container"
+        data-action="ajax:success->modal-component#close click->modal-component#closeBackground keyup@window->modal-component#closeWithKeyboard"
+        class="hidden absolute transform transition-all inset-32 overflow-y-auto flex justify-center" style="z-index: 9999;">
+     <div class="max-h-screen w-full relative">
+       <div class="bg-white rounded-md shadow pt-3">
+         <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+           <button type="button" class="btn-round" data-action="click->modal-component#close">
+             <span class="">X</span>
+           </button>
+         </div>
+         <turbo-frame id="<%= @name %>" data-modal-component-target="frame" src="" target="_top"></turbo-frame>
+       </div>
+     </div>
+   </div>
+ </div>

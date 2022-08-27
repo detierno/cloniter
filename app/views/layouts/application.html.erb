@@ -54,11 +54,11 @@
           <%= render AlertComponent::Info.new(message: notice) %>
           <%= render AlertComponent::Alert.new(message: alert) %>
 
-          <%= turbo_frame_tag 'new_tweet' %>
-
           <%= yield %>
         </main>
       </div>
     </div>
+
+    <%= render(Primer::ModalComponent.new(name: 'new_tweet')) %>
   </body>
 </html>
