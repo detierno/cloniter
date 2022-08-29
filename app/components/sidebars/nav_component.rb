@@ -5,17 +5,8 @@ module Sidebars
     renders_many :sections, 'SectionComponent'
 
     class SectionComponent < ViewComponent::Base
-      # not working in nested components
-      # renders_many :links, 'LinkComponent'
-      # renders_many :buttons, 'ButtonComponent'
-
-      def initialize(name:, links: [], buttons: [])
-        super
-
-        @name = name
-        @links = links
-        @buttons = buttons
-      end
+      renders_many :links, 'Sidebars::NavComponent::LinkComponent'
+      renders_many :buttons, 'Sidebars::NavComponent::ButtonComponent'
     end
 
     class LinkComponent < ViewComponent::Base

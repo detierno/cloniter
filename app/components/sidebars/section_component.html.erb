@@ -1,15 +1,15 @@
 <li class="px-5">
   <div class="flex flex-row items-center h-8">
     <div class="text-sm font-light tracking-wide text-gray-500">
-      <%= @name %>
+      <%= content %>
     </div>
   </div>
 </li>
 
-<% @links.each do |link| %>
-  <%= render Sidebars::NavComponent::LinkComponent.new(**link) %>
+<% links.each do |link| %>
+  <%= link %>
 <% end %>
 
-<% @buttons.each do |button| %>
-  <%= render Sidebars::NavComponent::ButtonComponent.new(**button) %>
+<% buttons.each do |button| %>
+  <%= button %>
 <% end %>

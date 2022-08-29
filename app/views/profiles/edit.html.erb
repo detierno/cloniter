@@ -9,8 +9,16 @@
 
   <p>
     <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-    <%= error_messages @account, :avatar %>
+
+    <div class="flex flex-row">
+      <div class="flex-shrink-0">
+        <%= render(Accounts::AvatarComponent.new(account: @account)) %>
+      </div>
+      <div class="p-2 flex-1 min-w-0">
+        <%= f.file_field :avatar %>
+        <%= error_messages @account, :avatar %>
+      </div>
+    </div>
   </p>
 
   <p class="mt-5">
