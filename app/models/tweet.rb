@@ -7,11 +7,11 @@ class Tweet < ApplicationRecord
 
   validates :content, value: true
 
-  scope :from_accounts, ->(account_ids) { where(account_id: account_ids) }
+  scope :from_accounts, ->(account_ids) { includes(account: :avatar_attachment).where(account_id: account_ids) }
 
-  def publish
-    save.tap { |saved| broadcast_to_subscribers if saved }
-  end
+  def author = account.name
+
+  def publish = save.tap { |saved| broadcast_to_subscribers if saved }
 
   private
 

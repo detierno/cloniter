@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'accounts/index', as: :accounts
 
+  get 'profile', to: 'profiles#edit'
+  patch 'profile', to: 'profiles#update'
+
   get 'feeds/index', as: :feed
 
   root to: 'tweets#index'

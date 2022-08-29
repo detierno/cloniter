@@ -1,0 +1,19 @@
+<%= render(Primer::TitleComponent.new(title: 'Edit Account')) %>
+
+<%= form_with model: @account, url: profile_path, method: :patch do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+    <%= exceptional_messages @account.name %>
+  </p>
+
+  <p>
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
+    <%= error_messages @account, :avatar %>
+  </p>
+
+  <p class="mt-5">
+    <%= render(Primer::ButtonComponent::Primary.new(type: :submit)) { 'Update account' } %>
+  </p>
+<% end %>

@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   include Authentication
 
   def index
-    @tweets = Current.account.tweets
+    @tweets = Tweet.from_accounts(Current.account.id)
   end
 
   def new
