@@ -57,6 +57,12 @@ Install Postgresql for db and libvips (or imagemagick) for image processing.
 - Editing profile fields should reflect instantly on the sidebar;
 - Posting a tweet will update followers feeds on the fly;
 
+
+
+https://user-images.githubusercontent.com/65082/187324601-fd347057-bd64-436f-bce0-7b2cf445cd7b.mov
+
+
+
 ## Running tests
 
 - Run an individual test with
