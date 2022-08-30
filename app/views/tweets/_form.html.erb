@@ -2,7 +2,7 @@
   <%= render(Primer::TitleComponent.new(title: 'Say something')) %>
 
   <%= form_with model: tweet do |form| %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, autofocus: true, autocomplete: :off %>
     <%= exceptional_messages tweet.content %>
 
   <p class="mt-5">

@@ -23,9 +23,7 @@ is not represented by a string. Instead is represented by its own class
 
 ```ruby
 Tweet.new(content: 'Hello there')
-=> #<Tweet:0x00007fef793705f8
-     id: nil,
-     content: TweetContent(Hello there)>
+=> <Tweet:0x00007fef793705f8, content: TweetContent(Hello there)>
 ```
 
 ### No special case
