@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 jon = Account.create!(name: 'Jon Snow', username: 'jon_snow', password: 'secret')
-jon.avatar.attach(io: File.open(File.join(Rails.root, 'db/seeds/jon.png')), filename: 'jon.png')
+jon.avatar.attach(io: File.open(Rails.root.join('db/seeds/jon.png')), filename: 'jon.png')
 
 samsa = Account.create!(name: 'Samsa stark', username: 'samsa_stark', password: 'secret')
-samsa.avatar.attach(io: File.open(File.join(Rails.root, 'db/seeds/samsa.png')), filename: 'samsa.png')
+samsa.avatar.attach(io: File.open(Rails.root.join('db/seeds/samsa.png')), filename: 'samsa.png')
 
 jaime = Account.create!(name: 'Jaime Lannister', username: 'jaime_lannister', password: 'secret')
-jaime.avatar.attach(io: File.open(File.join(Rails.root, 'db/seeds/jaime.png')), filename: 'jaime.png')
+jaime.avatar.attach(io: File.open(Rails.root.join('db/seeds/jaime.png')), filename: 'jaime.png')
 
 jon.follow(samsa)
 
