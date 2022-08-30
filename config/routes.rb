@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'feeds/index', as: :feed
 
-  root to: 'tweets#index'
+  root to: 'feeds#index'
 
   namespace :auth, as: '' do
     get 'sign_up', to: 'registrations#new'
