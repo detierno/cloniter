@@ -7,7 +7,6 @@ module Broadcast
     def setup
       @tweet = mock('Tweet')
       @subscriber = create(:account)
-
     end
 
     test '#prepend call broadcast prepend later' do
@@ -25,7 +24,6 @@ module Broadcast
     end
 
     test '#prepend call TweetComponent' do
-      component = mock('TweetComponent')
       broadcaster = Broadcast::Tweet.new(@tweet, @subscriber)
 
       TweetComponent
