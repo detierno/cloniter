@@ -34,10 +34,10 @@ User god models are a misrepresentation of how users actually
 interacts with the system.
 
 ### Object orientated messages with no long chains
-No `ActiveRecord` chains scattered in models/controllers
+No `ActiveRecord` chains scattered in models/controllers.
 
 ### Components
-Make rails view layer more sane
+Make rails view layer more sane (In probation yet)
 
 ## Setup
 - Requirements
@@ -55,11 +55,11 @@ Install Postgresql for db and libvips (or imagemagick) for image processing.
 
 ## Nice things to play
 - Editing profile fields should reflect instantly on the sidebar;
-- Posting a tweet will update followers feeds on the fly;
+- Posting/Liking a tweet will update followers feeds on the fly;
 
 
 
-https://user-images.githubusercontent.com/65082/187324601-fd347057-bd64-436f-bce0-7b2cf445cd7b.mov
+https://user-images.githubusercontent.com/65082/188007305-889c0804-27a4-4215-85a0-0f9bee13832a.mov
 
 
 
@@ -72,5 +72,5 @@ rails test test/path/to/test_file
 
 - Run the full suit
 ```
-railst test:all
+rails test:all
 ```
