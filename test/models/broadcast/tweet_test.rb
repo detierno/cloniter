@@ -5,13 +5,14 @@ require 'test_helper'
 module Broadcast
   class TweetTest < ActiveSupport::TestCase
     def setup
+      @account = mock('Account')
       @tweet = mock('Tweet')
       @subscriber = create(:account)
     end
 
     test '#prepend call broadcast prepend later' do
       component = mock('TweetComponent')
-      broadcaster = Broadcast::Tweet.new(@tweet, @subscriber)
+      broadcaster = Broadcast::Tweet.new(@account, @tweet, @subscriber)
 
       ApplicationController.stubs(:render).returns(component)
 
@@ -24,11 +25,11 @@ module Broadcast
     end
 
     test '#prepend call TweetComponent' do
-      broadcaster = Broadcast::Tweet.new(@tweet, @subscriber)
+      broadcaster = Broadcast::Tweet.new(@account, @tweet, @subscriber)
 
       TweetComponent
         .expects(:new)
-        .with(tweet: @tweet)
+        .with(tweet: @tweet, current_account: @account)
         .once
         .returns('html tweet component')
 
