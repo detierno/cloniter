@@ -69,8 +69,8 @@ class AccountTest < ActiveSupport::TestCase
 
     account.stubs(:subscribers).returns([subscriber1, subscriber2])
 
-    Broadcast::Tweet.expects(:prepend).with(account: account, tweet: tweet, subscriber: subscriber1)
-    Broadcast::Tweet.expects(:prepend).with(account: account, tweet: tweet, subscriber: subscriber2)
+    Broadcast::Tweet.expects(:prepend).with(account:, tweet:, subscriber: subscriber1)
+    Broadcast::Tweet.expects(:prepend).with(account:, tweet:, subscriber: subscriber2)
 
     account.on_tweet_published(tweet)
   end
@@ -83,8 +83,8 @@ class AccountTest < ActiveSupport::TestCase
 
     account.stubs(:subscribers).returns([subscriber1, subscriber2])
 
-    Broadcast::Tweet.expects(:replace).with(account: account, tweet: tweet, subscriber: subscriber1)
-    Broadcast::Tweet.expects(:replace).with(account: account, tweet: tweet, subscriber: subscriber2)
+    Broadcast::Tweet.expects(:replace).with(account:, tweet:, subscriber: subscriber1)
+    Broadcast::Tweet.expects(:replace).with(account:, tweet:, subscriber: subscriber2)
 
     account.on_tweet_changed(tweet)
   end

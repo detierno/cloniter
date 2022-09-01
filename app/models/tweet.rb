@@ -16,20 +16,20 @@ class Tweet < ApplicationRecord
   end
 
   def add_like(account)
-    likes.create!(account: account)
+    likes.create!(account:)
     account.on_tweet_changed(self)
   end
 
   def author = account.name
 
-  def get_like(account) = likes.find_by(account: account)
+  def get_like(account) = likes.find_by(account:)
 
-  def liked_by?(account) = likes.exists?(account: account)
+  def liked_by?(account) = likes.exists?(account:)
 
   def publish = save.tap { |saved| account.on_tweet_published(self) if saved }
 
   def remove_like(account)
-    likes.destroy_by(account: account)
+    likes.destroy_by(account:)
     account.on_tweet_changed(self)
   end
 end

@@ -6,7 +6,7 @@ module Accounts
   class FollowComponentTest < ViewComponent::TestCase
     test 'renders nothing when current_account follows account' do
       current_account = mock('Account', follows?: true)
-      component = Accounts::FollowComponent.new(account: 'Foo', current_account: current_account)
+      component = Accounts::FollowComponent.new(account: 'Foo', current_account:)
 
       assert_empty render_inline(component).to_html
     end
@@ -15,7 +15,7 @@ module Accounts
       account = mock('Account', id: 10)
       current_account = mock('Account', follows?: false)
 
-      component = Accounts::FollowComponent.new(account: account, current_account: current_account)
+      component = Accounts::FollowComponent.new(account:, current_account:)
 
       render_inline(component)
 
