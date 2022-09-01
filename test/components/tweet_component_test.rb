@@ -11,13 +11,7 @@ class TweetComponentTest < ViewComponent::TestCase
   end
 
   test 'renders tweet content' do
-    expected = <<~STR.squish
-      <p class="font-normal text-gray-700 dark:text-gray-400"> #{@tweet.content} </p>
-    STR
-
-    assert_equal(
-      expected,
-      render_inline(TweetComponent.new(tweet: @tweet)).css('p:last').to_html.squish
-    )
+    render_inline(TweetComponent.new(tweet: @tweet, current_account: @tweet.account))
+    assert_text(:visible, @tweet.content)
   end
 end
