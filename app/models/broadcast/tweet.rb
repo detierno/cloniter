@@ -2,11 +2,16 @@
 
 module Broadcast
   class Tweet
-    def self.prepend(tweet:, subscriber:)
-      new(tweet, subscriber).prepend
+    def self.prepend(account:, tweet:, subscriber:)
+      new(account, tweet, subscriber).prepend
     end
 
-    def initialize(tweet, subscriber)
+    def self.replace(account:, tweet:, subscriber:)
+      new(account, tweet, subscriber).replace
+    end
+
+    def initialize(account, tweet, subscriber)
+      @account = account
       @tweet = tweet
       @subscriber = subscriber
     end
@@ -19,13 +24,21 @@ module Broadcast
       )
     end
 
+    def replace
+      Turbo::StreamsChannel.broadcast_replace_later_to(
+        [subscriber, :feed],
+        target: @tweet,
+        html: rendered_component
+      )
+    end
+
     private
 
-    attr_reader :tweet, :subscriber
+    attr_reader :account, :tweet, :subscriber
 
     def rendered_component
       ApplicationController.render(
-        TweetComponent.new(tweet: tweet),
+        TweetComponent.new(tweet: tweet, current_account: account),
         layout: false
       )
     end

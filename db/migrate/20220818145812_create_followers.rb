@@ -8,5 +8,7 @@ class CreateFollowers < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :followers, %i[account_id subscriber_id], unique: true
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_27_012111) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_110303) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,11 +59,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_012111) do
     t.index ["subscriber_id"], name: "index_followers_on_subscriber_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "tweet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "tweet_id"], name: "index_likes_on_account_id_and_tweet_id", unique: true
+    t.index ["account_id"], name: "index_likes_on_account_id"
+    t.index ["tweet_id"], name: "index_likes_on_tweet_id"
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "account_id", null: false
+    t.integer "likes_count"
     t.index ["account_id"], name: "index_tweets_on_account_id"
   end
 
@@ -71,5 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_012111) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "followers", "accounts"
   add_foreign_key "followers", "accounts", column: "subscriber_id"
+  add_foreign_key "likes", "accounts"
+  add_foreign_key "likes", "tweets"
   add_foreign_key "tweets", "accounts"
 end

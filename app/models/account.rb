@@ -39,8 +39,12 @@ class Account < ApplicationRecord
 
   def follows?(account) = subscribed_accounts.subscribed?(account)
 
+  def on_tweet_changed(tweet)
+    subscribers.each { |sub| Broadcast::Tweet.replace(account: self, tweet: tweet, subscriber: sub) }
+  end
+
   def on_tweet_published(tweet)
-    subscribers.each { |sub| Broadcast::Tweet.prepend(tweet: tweet, subscriber: sub) }
+    subscribers.each { |sub| Broadcast::Tweet.prepend(account: self, tweet: tweet, subscriber: sub) }
   end
 
   def unfollow(account) = subscribed_accounts.unsubscribe(account)

@@ -3,5 +3,5 @@
 <%= turbo_stream_from current_account, :feed %>
 
 <div id="feed">
-  <%= render TweetComponent.with_collection(@feed) %>
+  <%= render TweetComponent.with_collection(@feed, current_account: current_account) %>
 </div

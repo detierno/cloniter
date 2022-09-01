@@ -1,3 +1,7 @@
 <%= render(Primer::TitleComponent.new(title: 'My Tweets')) %>
 
-<%= render TweetComponent.with_collection(@tweets) %>
+<%= turbo_stream_from current_account, :feed %>
+
+<div id="feed">
+  <%= render TweetComponent.with_collection(@tweets, current_account: current_account) %>
+</div>

@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tweets, only: %i[index new create]
+  resources :tweets, only: %i[index new create] do
+    resources :likes, only: %i[create destroy], module: :tweets
+  end
 
   resources :followers, only: %i[create destroy]
 
-  get 'accounts/index', as: :accounts
+  get 'accounts', to: 'accounts#index', as: :accounts
 
   get 'profile', to: 'profiles#edit'
   patch 'profile', to: 'profiles#update'
 
-  get 'feeds/index', as: :feed
+  get 'feed', to: 'feeds#index', as: :feed
 
   root to: 'feeds#index'
 

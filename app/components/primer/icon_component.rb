@@ -26,12 +26,18 @@ module Primer
       5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01
     ICON
 
+    HEART_SHAPE = <<~ICON.squish
+      M4.318 6.318a4.5 4.5 0 000 6.364L12
+      20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z
+    ICON
+
     SHAPES = {
       feed: FEED_SHAPE,
       users: USERS_SHAPE,
       speech: SPEECH_SHAPE,
       logout: LOGOUT_SHAPE,
-      task: TASK_SHAPE
+      task: TASK_SHAPE,
+      heart: HEART_SHAPE
     }.freeze
 
     def initialize(icon:)
