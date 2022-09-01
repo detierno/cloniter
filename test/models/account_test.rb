@@ -61,6 +61,20 @@ class AccountTest < ActiveSupport::TestCase
     assert_empty @jon.subscribers
   end
 
+  test '#on_tweet_published broadcast to all subscribers' do
+    account = build(:account)
+    tweet = mock('Tweet')
+    subscriber1 = mock('Subscriber')
+    subscriber2 = mock('Subscriber')
+
+    account.stubs(:subscribers).returns([subscriber1, subscriber2])
+
+    Broadcast::Tweet.expects(:prepend).with(tweet: tweet, subscriber: subscriber1)
+    Broadcast::Tweet.expects(:prepend).with(tweet: tweet, subscriber: subscriber2)
+
+    account.on_tweet_published(tweet)
+  end
+
   test '#unfollow' do
     samsa = create(:samsa_account)
 

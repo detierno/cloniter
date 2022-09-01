@@ -15,11 +15,5 @@ class Tweet < ApplicationRecord
 
   def author = account.name
 
-  def publish = save.tap { |saved| broadcast_to_subscribers if saved }
-
-  private
-
-  def broadcast_to_subscribers
-    account.subscribers.each { |sub| Broadcast::Tweet.prepend(tweet: self, subscriber: sub) }
-  end
+  def publish = save.tap { |saved| account.on_tweet_published(self) if saved }
 end
