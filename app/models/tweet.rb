@@ -7,7 +7,11 @@ class Tweet < ApplicationRecord
 
   validates :content, value: true
 
-  scope :from_accounts, ->(account_ids) { includes(account: :avatar_attachment).where(account_id: account_ids) }
+  def self.from_accounts(account_ids)
+    includes(account: :avatar_attachment)
+      .where(account_id: account_ids)
+      .order(created_at: :desc)
+  end
 
   def author = account.name
 
