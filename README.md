@@ -34,7 +34,7 @@ User god models are a misrepresentation of how users actually
 interacts with the system.
 
 ### Object orientated messages with no long chains
-No `ActiveRecord` chains scattered in models/controllers. See [OO_MESSAGES] for a detailed example.
+No `ActiveRecord` chains scattered in models/controllers. See [this article](OO_MESSAGES.md) for a detailed example.
 
 ### Components
 Make rails view layer more sane (In probation yet)
