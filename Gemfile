@@ -58,9 +58,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'foreman'
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'foreman'
   gem 'rubocop'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'rubocop-rails', require: false
