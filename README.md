@@ -50,9 +50,6 @@ Install Postgresql for db and libvips (or imagemagick) for image processing.
 
 - Run local services
 ```
-# Install foreman (just needed once)
-gem install foreman
-
 # Run the services
 ./bin/dev
 ```
