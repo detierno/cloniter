@@ -2,7 +2,7 @@ Let's talk about a common mistake in rails apps, using an example. Imagine you a
 ```ruby
 # tweets_controller.rb
 class TweetsController
-	def create
+def create
 	  @tweet = @account.build_tweet(tweet_params)
 		@tweet.publish
 	end
