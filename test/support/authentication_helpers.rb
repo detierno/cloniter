@@ -2,11 +2,8 @@
 
 module Support
   module AuthenticationHelpers
-    def sign_in_account(account, test_instance)
-      controller_klass = test_instance.class_name.gsub('Test', '').constantize
-
-      Current.stubs(:account).returns(account)
-      controller_klass.any_instance.stubs(:authenticate)
+    def sign_in_account(account, password)
+      post sign_in_path, params: { username: account.username, password: password }
     end
   end
 end

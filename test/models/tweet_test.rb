@@ -23,4 +23,13 @@ class TweetTest < ActiveSupport::TestCase
     account.expects(:on_tweet_published).never
     tweet.publish
   end
+
+  test 'get like for an account' do
+    tweet = create(:tweet)
+    account = create(:account)
+
+    like = tweet.likes.create!(account:)
+
+    assert_equal like, tweet.get_like(account)
+  end
 end

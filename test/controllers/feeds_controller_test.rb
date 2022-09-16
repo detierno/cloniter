@@ -2,20 +2,21 @@
 
 require 'test_helper'
 
-class AccountsControllerTest < ActionDispatch::IntegrationTest
+class FeedsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account = create(:account, password: 'secret')
     sign_in_account @account, 'secret'
   end
 
   test 'should get accounts index' do
-    get accounts_url
+    get feed_url
     assert_response :success
   end
 
-  test 'should call Account.all_except' do
-    Account.expects(:all_except).with(@account).once
-    get accounts_url
+  test 'should call Current.account.feed' do
+    Account.any_instance.expects(:feed).once
+
+    get feed_url
     assert_response :success
   end
 end
