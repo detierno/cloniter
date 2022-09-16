@@ -3,7 +3,7 @@
 module Support
   module AuthenticationHelpers
     def sign_in_account(account, password)
-      post sign_in_path, params: { username: account.username, password: password }
+      post sign_in_path, params: { username: account.username, password: }
     end
   end
 end

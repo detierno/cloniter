@@ -18,7 +18,7 @@ class TweetsControllerTest < ActionDispatch::IntegrationTest
     Tweet.expects(:from_accounts).with(@account.id).once.returns([tweet])
 
     get tweets_url
-    assert_match /#{tweet.content}/, @response.body
+    assert_match(/#{tweet.content}/, @response.body)
   end
 
   test 'tweet creation redirects to tweets path' do

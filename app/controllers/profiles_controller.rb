@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     @account = Current.account
 
     if @account.update(account_params)
-      redirect_to profile_path, notice: 'Account updated'
+      redirect_to profile_path, notice: 'Account updated', status: :no_content
     else
       render :edit, status: :unprocessable_entity
     end
