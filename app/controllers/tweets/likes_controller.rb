@@ -6,7 +6,7 @@ module Tweets
 
     def create
       if tweet.add_like(Current.account)
-        redirect_to feed_path, notice: 'Tweet liked'
+        redirect_to feed_path, notice: 'Tweet liked', status: :created
       else
         flash[:alert] = 'Unable to like tweet'
         redirect_to feed_path, status: :unprocessable_entity
