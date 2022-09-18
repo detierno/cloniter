@@ -16,7 +16,7 @@ module Tweets
         post tweet_likes_path(@tweet)
       end
 
-      assert_response :created
+      assert_response :found
     end
 
     test 'delete a like decrease the number of likes' do

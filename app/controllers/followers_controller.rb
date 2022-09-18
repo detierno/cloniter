@@ -5,7 +5,7 @@ class FollowersController < ApplicationController
 
   def create
     if Current.account.follow(account)
-      redirect_to accounts_path, notice: 'Account followed', status: :created
+      redirect_to accounts_path, notice: 'Account followed'
     else
       flash[:alert] = 'Unable to follow account'
       redirect_to accounts_path, status: :unprocessable_entity

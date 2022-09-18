@@ -15,7 +15,7 @@ class FollowersControllerTest < ActionDispatch::IntegrationTest
       post followers_url(id: @account_to_follow)
     end
 
-    assert_response :created
+    assert_response :found
   end
 
   test 'should decrease followers count unfollowing' do
