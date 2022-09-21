@@ -4,6 +4,8 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'mocha/minitest'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'minitest/rails'
+
 require 'support/authentication_helpers'
 
 module ActiveSupport

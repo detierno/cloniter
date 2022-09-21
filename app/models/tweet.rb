@@ -17,7 +17,7 @@ class Tweet < ApplicationRecord
 
   def add_like(account)
     likes.create!(account:)
-    account.on_tweet_changed(self)
+    self.account.on_tweet_changed(self)
   end
 
   def author = account.name

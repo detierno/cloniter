@@ -29,7 +29,7 @@ module Broadcast
 
       TweetComponent
         .expects(:new)
-        .with(tweet: @tweet, current_account: @account)
+        .with(tweet: @tweet, current_account: @subscriber)
         .once
         .returns('html tweet component')
 

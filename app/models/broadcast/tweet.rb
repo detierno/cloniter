@@ -38,7 +38,7 @@ module Broadcast
 
     def rendered_component
       ApplicationController.render(
-        TweetComponent.new(tweet:, current_account: account),
+        TweetComponent.new(tweet:, current_account: subscriber),
         layout: false
       )
     end
