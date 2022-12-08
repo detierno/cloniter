@@ -1,4 +1,4 @@
-Let's talk about a common mistake in rails apps, using an example. Imagine you are implementing your own Tweeter in rails and you have to notify subscribers from an account that a tweet was published. Simplest implementation can look like that:
+Let's talk about a common mistake in rails apps, using an example. Imagine you are implementing your own Twitter in rails and you have to notify subscribers from an account that a tweet was published. Simplest implementation can look like that:
 ```ruby
 # tweets_controller.rb
 class TweetsController
